@@ -13,13 +13,13 @@ func BenchmarkGetDataPointer(b *testing.B) {
 	svc := service.NewService(repository)
 
 	// Start CPU profiling
-	f, err := os.Create("mem1.prof")
+	f, err := os.Create("mem1-pointer.prof")
 	if err != nil {
 		b.Error(err)
 	}
 	defer f.Close()
 	defer pprof.WriteHeapProfile(f)
-	cpuFile, err := os.Create("cpu1.prof")
+	cpuFile, err := os.Create("cpu1-pointer.prof")
 	if err != nil {
 		b.Error(err)
 	}
@@ -39,7 +39,7 @@ func BenchmarkGetDataValue(b *testing.B) {
 	svc := service.NewService(repository)
 
 	// Start CPU profiling
-	f, err := os.Create("mem2.prof")
+	f, err := os.Create("mem1-value.prof")
 	if err != nil {
 		b.Error(err)
 	}
@@ -47,7 +47,7 @@ func BenchmarkGetDataValue(b *testing.B) {
 	defer pprof.WriteHeapProfile(f)
 
 	// Start CPU profiling
-	cpuFile, err := os.Create("cpu2.prof")
+	cpuFile, err := os.Create("cpu1-value.prof")
 	if err != nil {
 		b.Error(err)
 	}

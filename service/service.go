@@ -1,13 +1,13 @@
 package service
 
 import (
-	"go-mem-profile/entity"
 	"go-mem-profile/repo"
+	"strconv"
 )
 
 type Service interface {
-	GetDataPointer() *entity.LargeData
-	GetDataValue() entity.LargeData
+	GetDataPointer() string
+	GetDataValue() string
 }
 
 type service struct {
@@ -20,39 +20,35 @@ func NewService(repo repo.Repository) Service {
 	}
 }
 
-func (s *service) GetDataPointer() *entity.LargeData {
-	// var datas []interface{}
+func (s *service) GetDataPointer() string {
 
 	data := s.repo.GetDataPointer()
-	// counter := 0
+	counter := 0
 
-	// for i := 0; i < 100_000; i++ {
-	// 	counter += data.Age
-
-	// 	// datas = append(datas, data)
-	// }
+	for i := 0; i < 100_000; i++ {
+		counter += data.Age
+	}
 
 	// _ = data
 
-	return data
-	// return strconv.Itoa(counter)
+	// return data
+	return strconv.Itoa(counter)
 
 }
 
-func (s *service) GetDataValue() entity.LargeData {
-	// var datas []interface{}
+func (s *service) GetDataValue() string {
 	data := s.repo.GetDataValue()
 
-	// counter := 0
+	counter := 0
 
-	// for i := 0; i < 100_000; i++ {
-	// 	counter += data.Age
-	// 	// datas = append(datas, data)
-	// }
+	for i := 0; i < 100_000; i++ {
+		counter += data.Age
+	}
 
-	// // _ = data
+	// _ = data
 
-	return data
+	return strconv.Itoa(counter)
+	// return data
 }
 
 // func (s *service) GetDataPointer() string {
